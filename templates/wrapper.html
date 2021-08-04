@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/assets/css/bootstrap.css">
+    <link rel="stylesheet" href="/static/assets/css/bootstrap.min.css">
+    <link href="/static/assets/css/material-design-iconic-font.css" rel="stylesheet">
+    <title>PyCode</title>
+</head>
+<body>
+    <!-- navbar section -->
+    <section>
+        <nav>
+            <div class="navbar-light bg-light shadow">
+                <a href="#" class="nav-link"><h2>Students</h2></a>
+            </div>
+        </nav>
+    </section>
+
+{% block content %}
+    
+{% endblock content %}
+    
+<br><br><br>
+<script type="text/javascript" src='{% static "ckeditor/ckeditor-init.js" %}'></script>
+<script type="text/javascript" src='{% static "ckeditor/ckeditor/ckeditor.js" %}'></script>
+</body>
+</html>

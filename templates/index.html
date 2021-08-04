@@ -1,0 +1,58 @@
+{% extends 'wrapper.html' %}
+{% load static %}
+{% block content %}
+    <div class="m-5">
+        <div style="float: right;">
+            <div class="card">
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">First</th>
+                        <th scope="col">Last</th>
+                        <th scope="col">Handle</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">2</th>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">3</th>
+                        <td colspan="2">Larry the Bird</td>
+                        <td>@twitter</td>
+                      </tr>
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card shadow">
+                    <div class="card-header">
+                        <h3>guruh nomi</h3>
+                    </div>
+                    <div class="card-body">
+                        <img src="/static/assets/image/10.jfif" alt="">
+                    </div>
+                    <div class="card-footer">
+                        <a href="#" class="btn btn-success w-100 mb-3"><i class="zmdi zmdi-refresh"></i> To'lovlarni olish</a>
+                        <a href="#" class="btn btn-warning"><i class="zmdi zmdi-edit"></i> O'zgartirish</a>
+                        <a href="#" class="btn btn-danger"><i class="zmdi zmdi-delete"></i> O'chirish</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+{% endblock content %}
+    
