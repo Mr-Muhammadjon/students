@@ -1,0 +1,49 @@
+{% extends 'wrapper.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5">
+    <center>
+        <div class="card" style="width: auto;">
+            <div class="card-header">
+                <h3>O'qituvchi qo'shish</h3>
+                <p class="small text-warning">O'qituvchiga "username" va "parolni" bering</p>
+            </div>
+            <form action="" method="POST" enctype="multipart/form-data"> {% csrf_token %}
+                <div class="card-body">
+                    <div class="" w-auto>
+                        <div class="">
+                            <h4>Kirish uchun asosiy ma'lumotlar</h4>
+                            <label for="">Ismi:</label>
+                            {{form1.first_name}}
+                            <label for="">Familiyasi:</label>
+                            {{form1.last_name}}
+                            <label for="">Username:</label>
+                            {{form1.username}}
+                            <label for="">Parol:</label>
+                            {{form1.password1}}
+                            <label for="">Parolni tasdiqlash:</label>
+                            {{form1.password2}}
+                        </div>
+                    </div>
+                    <hr>
+                    <button type="submit" class="btn btn-primary">Tasdiqlash</button>
+                </div>
+            </form>
+        </div>
+    </center>
+</div>
+<script>
+    document.querySelector('#id_first_name').className='form-control mb-3 w-auto'
+    document.querySelector('#id_last_name').className='form-control mb-3 w-auto'
+    document.querySelector('#id_username').className='form-control mb-3 w-auto'
+    document.querySelector('#id_password1').className='form-control mb-3 w-auto'
+    document.querySelector('#id_password2').className='form-control mb-3 w-auto'
+
+    document.querySelector('#id_image').className='form-control mb-3 w-auto'
+    document.querySelector('#id_tel_num').className='form-control mb-3 w-auto'
+    document.querySelector('#id_subject').className='form-control mb-3 w-auto'
+    document.querySelector('#id_price').className='form-control mb-3 w-auto'
+</script>
+{% endblock content %}
+    

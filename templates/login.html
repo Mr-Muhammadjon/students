@@ -1,0 +1,25 @@
+{% extends 'wrapper.html' %}
+{% load static %}
+{% block content %}
+    <div class="container mt-5">
+        <center>
+            <div class="card" style="width: auto;">
+                <div class="card-header">
+                    <h3>Tizimga kirish</h3>
+                </div>
+                <form action="" method="POST">
+                    <div class="card-body">
+                        {{form}}
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-success">Tasdiqlash</button>
+                    </div>
+                </form>
+            </div>
+        </center>
+    </div>
+    <script>
+        document.querySelector('#id_username').className='form-control mb-3 w-auto'
+        document.querySelector('#id_password').className='form-control mb-3 w-auto'
+    </script>
+{% endblock content %}
+    
