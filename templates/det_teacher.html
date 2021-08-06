@@ -22,39 +22,36 @@
 
             <div class="col-lg-9 col-md-12">
                 
-                <table class="table w-100">
-                    <thead>
-                      <tr>
-                        <th scope="col">#id</th>
-                        <th scope="col">Ismi</th>
-                        <th scope="col">Familiya</th>
-                        <th scope="col">To'lov sum (1 ta dars)</th>
-                        <th scope="col">funksiyalar</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                        
-                        {% for stu in object.student.all %}
-                            <tr>
-                                <th scope="row">{{stu.id}}</th>
-                                <td>{{stu.name}}</td>
-                                <td>{{stu.surname}}</td>
-                                <td>{{stu.price}}</td>
-                                <td>
-                                    {% if object.user == request.user or request.user.is_superuser %}
-                                        <a href="" class="btn btn-success"><i class="zmdi zmdi-plus"></i> Keldi</a>
-                                        <a href="" class="btn btn-primary"><i class="zmdi zmdi-money"></i> To'lov qildi</a>
-                                    {% endif %}
-                                    <a href="" class="btn btn-primary"><i class="zmdi zmdi-eye"></i> Ko'rish</a>  
-                                </td>
-                            </tr>
-                        {% endfor %}
-                            
-                    </tbody>
-                  </table>
+                <table class="table w-100 mt-3">
+                    
+                    <tr class="head">
+                        <td>Ism, familiya</td>
+                        <td>12.12</td>
+                        <td>13.12</td>
+                        <td>14.12</td>
+                        <td>15.12</td>
+                        <td>17.12</td>
+                        <td>18.12</td>
+                    </tr>
+                    <tr>
+                        <td>Abdulhamid Zuhriddinov</td>
+                        <td class="bg-primary"></td>
+                        <td class="bg-primary"></td>
+                        <td class="bg-danger"></td>
+                        <td class="bg-primary"></td>
+                        <td class="bg-danger"></td>
+                        <td class="bg-primary"></td>
+                    </tr>
+                </table>
                     
             </div>
         </div>
     </div>
+    <style>
+        td{
+            border: 1px solid black;
+            width: auto;
+        }
+    </style>
 {% endblock content %}
     
