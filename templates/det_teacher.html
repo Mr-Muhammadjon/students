@@ -21,27 +21,51 @@
             </div>
 
             <div class="col-lg-9 col-md-12">
-                
+                <button id="openBtn" class="btn btn-primary">Davomat olish</button>
                 <table class="table w-100 mt-3">
                     
                     <tr class="head">
                         <td>Ism, familiya</td>
-                        <td>12.12</td>
-                        <td>13.12</td>
-                        <td>14.12</td>
-                        <td>15.12</td>
-                        <td>17.12</td>
-                        <td>18.12</td>
+                        {% for student in object.student.all %}
+
+                            {% for history in student.history.all %}
+
+                                {% if history %}
+                                    <td>{{history.came_time}}</td>
+                                    {% else %}
+                                    <td>19.12</td>
+                                {% endif %}
+
+                            {% endfor %}
+
+                        {% endfor %}
+                        
+                        <td id="cameNav"></td>
+                        <td class="afterCame">19.12</td>
                     </tr>
-                    <tr>
-                        <td>Abdulhamid Zuhriddinov</td>
-                        <td class="bg-primary"></td>
-                        <td class="bg-primary"></td>
-                        <td class="bg-danger"></td>
-                        <td class="bg-primary"></td>
-                        <td class="bg-danger"></td>
-                        <td class="bg-primary"></td>
-                    </tr>
+                    
+                    {% for student in object.student.all %}
+                        <tr>
+                            <td>{{student.name}}</td>
+                            
+                            {% for history in student.history.all %}
+                                
+                                {% if history %}
+                                    <td class="bg-primary"></td>
+                                    {% else %}
+                                    <td class="bg-danger"></td>
+                                {% endif %}
+                                    
+                            {% endfor %}
+                                
+                            <td class="cameButton">
+                                <a href="#" id="cameOk" class="btn btn-success" data-action='true'>Keldi</a>
+                            </td>
+                            <td class="afterCame bg-primary"></td>
+                        </tr>
+                    {% endfor %}
+                        
+                    
                 </table>
                     
             </div>
@@ -53,5 +77,27 @@
             width: auto;
         }
     </style>
+    <script src="/static/assets/js/jquery.min.js"></script>
+    <script>
+        $('#cameNav').hide();
+        $('.cameButton').hide();
+
+        $('.afterCame').hide();
+
+        $('#openBtn').on('click', function() {
+            $('#cameNav').show();
+            $('.cameButton').show();
+        })
+
+        $('#cameOk').on('click', function(){
+            if(this.action === 'true'){
+                this.action = 'false';
+                $('#cameOk').addClass('btn-warning')
+            }else{
+                this.action = 'true'
+                $('#cameOk').removeClass('btn-warning')
+            }
+        })
+    </script>
 {% endblock content %}
     

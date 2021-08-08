@@ -1,0 +1,40 @@
+{% extends 'wrapper.html' %}
+{% load static %}
+{% block content %}
+    <div class="container mt-5">
+        <h3>{{stu.surname}}, {{stu.name}}</h3><hr>
+        <div class="row">
+            <form action="" method="GET">
+                <input type="text" id="searchLive" class="form-control" placeholder="YYYY-OO-KK tuzilishda yozing" onkeyup="liveSearch(this.value)"><br>
+            </form><hr>
+            <div class="history">
+                <table class="w-100">
+                    
+                    {% for his in his %}
+                    
+                        {% if his.payed == True %}
+                            <tr class="bg-warning p-3">
+                                <td>To'lov qildi</td>
+                                <td>{{his.time}}</td>
+                                <td><b>{{his.payed_money}}</b> so'm</td>
+                            </tr>
+                            {% else %}
+                            <tr class="bg-info p-3">
+                                <td>Keldi</td>
+                                <td>{{his.time}}</td>
+                            </tr>
+                        {% endif %}
+                            
+                            
+                        
+                    {% endfor %}
+                        
+                </table>
+            </div>
+
+            <div class="results" style="display: none;">
+                
+            </div>
+        </div>
+    </div>
+{% endblock content %}

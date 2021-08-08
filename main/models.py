@@ -41,8 +41,9 @@ class Student(models.Model):
 
 class History(models.Model):
     student = models.ForeignKey(Student, related_name="history", on_delete=models.CASCADE)
-    came_time = models.DateTimeField("Kelgan sanasi", auto_now_add=False)
-    pay_time = models.DateTimeField("To'lov qilgan sanasi", auto_now_add=False)
+    time = models.CharField("Kelgan sanasi", blank=True, max_length=100)
+    payed = models.BooleanField("keldi/to'ladi", default=False)
+    payed_money = models.PositiveIntegerField("To'lagan summasi", default=0)
 
     def __str__(self):
         return self.student.name
