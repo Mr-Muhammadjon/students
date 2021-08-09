@@ -1,0 +1,61 @@
+{% load static %}
+<div class="sidebar">
+    <nav class="sidebar-nav">
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/"><i class="icon-speedometer"></i> Dashboard</a>
+            </li>
+            <li class="nav-item nav-dropdown">
+                <a class="nav-link nav-dropdown-toggle" href="#">
+                    <i class="nav-icon icon-user"></i> O'quvchilar</a>
+                <ul class="nav-dropdown-items">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/all_student/">
+                            <i class="nav-icon icon-puzzle"></i> O'quvchilar ro'yxati</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="dce_count' %}">
+                            <i class="nav-icon icon-puzzle"></i> Davomat</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/add_student/">
+                            <i class="nav-icon icon-puzzle"></i> O'quvchilar qo'shish</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item nav-dropdown">
+                <a class="nav-link nav-dropdown-toggle" href="#">
+                    <i class="nav-icon icon-user"></i> O'qtuvchilar</a>
+                <ul class="nav-dropdown-items">
+                    <li class="nav-item">
+                        <a class="nav-link" href="elist' %}">
+                            <i class="nav-icon icon-puzzle"></i>  O'qtuvchilar ro'yxati</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="eeacher' %}">
+                            <i class="nav-icon icon-puzzle"></i>  O'qtuvchi qo'shish</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item nav-dropdown">
+                <a class="nav-link nav-dropdown-toggle" href="#">
+                    <i class="nav-icon icon-user"></i> Employees</a>
+                <ul class="nav-dropdown-items">
+                    <li class="nav-item">
+                        <a class="nav-link" href="y_list' %}">
+                            <i class="nav-icon icon-puzzle"></i> Employee List</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="employee' %}">
+                            <i class="nav-icon icon-puzzle"></i> Create Employee</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <button class="sidebar-minimizer brand-minimizer" type="button"></button>
+
+    {% block sidebar %}
+    {% endblock %}
+</div>
+
