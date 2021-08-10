@@ -1,0 +1,35 @@
+{% extends 'wrapper.html' %}
+{% load static %}
+{% block content %}
+    <div class="m-5">
+        <div class="row">
+          <h2>O'qituvchilar</h2><hr>
+          {% for t in teach %}
+            <div class="col-lg-3 col-md-6">
+                <div class="card shadow mb-2">
+                    <div class="card-header">
+                        <h3>{{t.user.first_name}}</h3>
+                        <h6>{{t.user.last_name}}</h6><hr>
+                        <h4 class="text-primary mt-2">{{t.subject}}</h4>
+                        <p>O'quvchilar soni: {{t.student.all.count}}</p>
+                    </div>
+                    <div class="card-body">
+                      <center>{% if t.image %}
+                        <img class="avatar-bg" src="{{t.image.url}}" alt="">
+                        {% else %}
+                        <img class="avatar-bg" src="/static/assets/image/10.jfif" alt="">
+                      {% endif %}</center>
+                    </div>
+                    <div class="card-footer">
+                        <a href="{% url 'main:det_teacher' t.slug %}" class="btn btn-success w-100 mb-3"><i class="zmdi zmdi-eye"></i> Guruhni ko'rish</a>
+                    </div>
+                </div>
+            </div>
+          {% endfor %}
+            
+            
+        </div>
+        
+    </div>
+{% endblock content %}
+    

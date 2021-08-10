@@ -1,5 +1,6 @@
 {% extends 'base/base.html' %}
 {% load static %}
+{% load crispy_forms_tags %}
 
 {% block content %}
 
@@ -7,12 +8,12 @@
 
 <div class="card">
     <div class="card-header">
-        <h2>Teacher Entry Form</h2>
+        <h2>Yangi O'qtuvchi Qo'shish</h2>
     </div>
     <div class="card-body">
         <form action="" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ forms.as_p }}
+        {{ form1|crispy }}
         <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>

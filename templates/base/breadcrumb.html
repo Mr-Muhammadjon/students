@@ -10,12 +10,33 @@
             <a class="btn" href="#"><i class="icon-speech"></i></a>
             <a class="btn" href="
             "><i class="icon-graph"></i> &nbsp;Boshqaruv paneli</a>
-            <a class="btn" href="#"><i class="icon-settings"></i> &nbsp;Sozlamalar</a>
-        </div>
+            <a class="btn" href="#"><i class="icon-clock"> <span id="txt"></div></i> &nbsp;</a>
+        </span>
     </li>
-
-    khgfghjkl
 
     {% block breadcrumb %}
     {% endblock %}
 </ol>
+
+<body onload="startTime()">
+
+    
+   
+    
+    <script>
+    function startTime() {
+      const today = new Date();
+      let h = today.getHours();
+      let m = today.getMinutes();
+      let s = today.getSeconds();
+      m = checkTime(m);
+      s = checkTime(s);
+      document.getElementById('txt').innerHTML =  h + ":" + m + ":" + s;
+      setTimeout(startTime, 1000);
+    }
+    
+    function checkTime(i) {
+      if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+      return i;
+    }
+    </script>

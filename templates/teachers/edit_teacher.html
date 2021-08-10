@@ -1,5 +1,6 @@
 {% extends 'base/base.html' %}
 {% load static %}
+{% load crispy_forms_tags %}
 
 {% block content %}
 
@@ -7,12 +8,12 @@
 
 <div class="card">
     <div class="card-header">
-        <h2>Edit Teacher Info</h2>
+        <h2>O'qituvchini ma'lumotini tahrirlash</h2>
     </div>
     <div class="card-body">
         <form action="" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ edit_teacher_forms.as_p }}
+        {{ form|crispy }}
         <button type="submit" class="btn btn-primary">Save</button>
         </form>
     </div>
