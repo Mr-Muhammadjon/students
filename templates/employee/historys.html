@@ -1,0 +1,96 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block content %}
+
+{% include 'partials/_alerts.html' %}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-header">
+                <i class="fa fa-align-justify"></i> Teachers List</div>
+            <div class="card-body">
+                <table class="table table-responsive-sm table-bordered table-striped table-sm">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Ismi</th>
+                            <th>Familyasi</th>
+                            <th>Fan nomi</th>
+                            <th>Viloyati</th>
+                            <th>Dars narxi</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for teacher in teachers %}
+                            <tr>
+                                <td>{{ forloop.counter }}</td>
+                                <td>{{ teacher.user }}</td>
+                                <td>{{ teacher.sur_name }}</td>
+                                <td>{{ teacher.subject }}</td>
+                                <td>{{ teacher.province }}</td>
+                                <td>{{ teacher.price }}</td>
+                                <td>
+                                    <a href="{% url 'main:det_teacher' teacher.slug %}">
+                                        <button type="button" class="btn btn-primary">Batafsil</button>
+                                    </a>
+                                    <a href="{% url 'main:upd_teacher' teacher.id %}">
+                                        <button type="button" class="btn btn-info"><i class="fa fa-edit"></i></button>
+                                    </a>
+                                    <a href="{% url 'main:delete' teacher.id %}">
+                                        <button type="button" class="btn btn-danger">X</button>
+                                    </a>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="row">
+    <div class="col-md-12">
+        {% if teachers.has_other_pages %}
+            <ul class="pagination">
+                {% if teachers.has_previous %}
+                    <li class="page-item">
+                        <a href="?page={{teachers.previous_page_number}}" class="page-link">Prev</a>
+                    </li>
+                {% else %}
+                    <li class="page-item disabled">
+                        <a class="page-link">Prev</a>
+                    </li>
+                {% endif %}
+                {% for i in teachers.paginator.page_range %}
+                    {% if teachers.number == i %}
+                        <li class="page-item active">
+                            <a class="page-link">{{ i }}</a>
+                        </li>
+                    {% else %}
+                        <li class="page-item">
+                            <a href="?page={{ i }}" class="page-link">{{ i }}</a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+                {% if teachers.has_next %}
+                    <li class="page-item">
+                        <a href="?page={{teachers.next_page_number}}" class="page-link">Next</a>
+                    </li>
+                {% else %}
+                    <li class="page-item disabled">
+                        <a class="page-link">Next</a>
+                    </li>
+                {% endif %}
+            </ul>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}
+

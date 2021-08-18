@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "../../.."
+		},
+		{
+			"path": "../../../../../Downloads/Diana"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "Diana"
+	}
+}

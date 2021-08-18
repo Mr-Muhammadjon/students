@@ -1,0 +1,42 @@
+{% load static %}
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">Bosh sahifa</li>
+    <li class="breadcrumb-item"><a href="#">Admin</a></li>
+    <li class="breadcrumb-item active">Boshqaruv paneli</li>
+
+    <!-- Breadcrumb Menu-->
+    <li class="breadcrumb-menu d-md-down-none">
+        <div class="btn-group" role="group" aria-label="Button group">
+            <a class="btn" href="#"><i class="icon-speech"></i></a>
+            <a class="btn" href="
+            "><i class="icon-graph"></i> &nbsp;Boshqaruv paneli</a>
+            <a class="btn" href="#"><i class="icon-clock"> <span id="txt"></div></i> &nbsp;</a>
+        </span>
+    </li>
+
+    {% block breadcrumb %}
+    {% endblock %}
+</ol>
+
+<body onload="startTime()">
+
+    
+   
+    
+    <script>
+    function startTime() {
+      const today = new Date();
+      let h = today.getHours();
+      let m = today.getMinutes();
+      let s = today.getSeconds();
+      m = checkTime(m);
+      s = checkTime(s);
+      document.getElementById('txt').innerHTML =  h + ":" + m + ":" + s;
+      setTimeout(startTime, 1000);
+    }
+    
+    function checkTime(i) {
+      if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+      return i;
+    }
+    </script>

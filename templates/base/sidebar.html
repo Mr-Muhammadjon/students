@@ -1,0 +1,110 @@
+{% load static %}
+<!-- Button trigger modal -->
+
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/duotone.css" integrity="sha384-R3QzTxyukP03CMqKFe0ssp5wUvBPEyy9ZspCB+Y01fEjhMwcXixTyeot+S40+AjZ" crossorigin="anonymous"/>
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/fontawesome.css" integrity="sha384-eHoocPgXsiuZh+Yy6+7DsKAerLXyJmu2Hadh4QYyt+8v86geixVYwFqUvMU8X90l" crossorigin="anonymous"/>
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModal3Label" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModal3Label">O'qituvchini Tanlang</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            
+            {% for teach in teachers %}
+            <div class="card">
+                <a onclick="makeFalse({{teach.pk}})" href="#" class="nav-link"><h4>{{teach.user.first_name}}</h4></a>
+                <h5 class="pl-3">{{teach.user.last_name}}</h5>
+            </div>
+                
+            {% endfor %}
+                
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Yopish</button>
+         
+        </div>
+      </div>
+    </div>
+  </div>
+  
+<div class="sidebar">
+    <nav class="sidebar-nav">
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/"><i class="icon-speedometer"></i> Boshqaruv paneli</a>
+            </li>
+            <li class="nav-item nav-dropdown">
+                <a class="nav-link nav-dropdown-toggle" href="#">
+                    <i class="nav-icon icon-user"></i> O'quvchilar</a>
+                <ul class="nav-dropdown-items">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'main:all_student' %}">
+                            <i class="nav-icon icon-puzzle"></i> O'quvchilar ro'yxati</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/add_student/">
+                            <i class="nav-icon icon-puzzle"></i> O'quvchilar qo'shish</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item nav-dropdown">
+                <a class="nav-link nav-dropdown-toggle" href="#">
+                    <i class="nav-icon icon-user"></i> O'qtuvchilar</a>
+                <ul class="nav-dropdown-items">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/all_teacher/">
+                            <i class="nav-icon icon-puzzle"></i>  O'qtuvchilar ro'yxati</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/add_teacher/">
+                            <i class="nav-icon icon-puzzle"></i>  O'qtuvchi qo'shish</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item nav-dropdown">
+                <a class="nav-link nav-dropdown-toggle" href="#">
+                    <i class="nav-icon icon-user"></i> Davomatlar</a>
+                <ul class="nav-dropdown-items">
+                    <li class="nav-item">
+                        
+                        <a data-toggle="modal" data-target="#exampleModal3" class="nav-link" href="#">
+                            <i class="nav-icon icon-puzzle"></i> Davomat olish</a>
+                    </li>
+                    {% for s in teachers %}
+                        
+                    <li class="nav-item">
+                        
+                            
+                        <a class="nav-link" href="">
+                            <i class="nav-icon icon-puzzle"></i> Davomatlar ro'yxati</a>
+                       
+                    </li> {% endfor %}
+                </ul>
+            </li>
+        </ul>
+    </nav>
+    <button class="sidebar-minimizer brand-minimizer" type="button"></button>
+
+
+    <script>
+        function payBuget(pk){
+            if (window.XMLHttpRequest) {
+                var xhttp=new XMLHttpRequest();
+            } else {  // code for IE6, IE5
+                var xhttp=new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            xhttp.open("GET", "/get_plus/"+`?data=${pk}`, true);
+            xhttp.send();
+        }  
+    </script>
+    {% block sidebar %}
+    {% endblock %}
+</div>
+

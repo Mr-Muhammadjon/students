@@ -15,12 +15,23 @@ class CreateTeacherForm(forms.ModelForm):
 
     class Meta:
         model = Teacher
-        fields = ['image','tel_num','subject','price']
-        escape = ['user']
+        fields = '__all__'
+        
 
 
 class CreateStudentForm(forms.ModelForm):
 
     class Meta:
         model = Student
-        fields = ['name','surname','image','tel_num','place','price']
+        fields = '__all__'
+
+
+class DateForm(forms.Form):
+    date = forms.DateTimeField(
+        input_formats=['%d/%m/%Y %H:%M'],
+        widget=forms.DateTimeInput(attrs={
+            'class': 'form-control datetimepicker-input',
+            'data-target': '#datetimepicker1'
+        })
+    )
+        

@@ -1,0 +1,60 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-lg-7">
+        <div class="card">
+            <div class="card-header">
+                 <i class="fa fa-align-justify"></i> O'qtuvchinig shaxsiy ma'lumotlari
+            </div>
+            <div class="card-body">
+                <tbody>
+                    <tr>
+                        <td>Ismi: {{ object.user }}</td>
+                        <br>
+                        <td>Familiyasi: {{ object.sur_name }}</td>
+                        <br>
+                        <td>Yoshi: {{ object.age }}</td>
+                        <br>
+                        <td>Viloyati: {{ object.province }}</td>
+                        <br>
+                        <td>Yashash manzili: {{ object.address }}</td>
+                        <br>
+                        <td>Kelgan sanasi: {{ object.date }}</td>
+                    </tr>
+                </tbody>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-5">
+        <div class="card">
+            <div class="card-header">
+                 <i class="fa fa-align-justify"></i> O'qtuvchinig maoshlari
+            </div>
+            <div class="card-body">
+
+                <h6>Bitta dars narxi: {{ object.price }}</h6>
+                <h6>Biroydagi darslar soni: {{ object.countsub }}</h6>
+                <h6>Umumiy maosh:  {{ object.allprice }}</h6>
+            </div>
+        </div>
+    </div>
+   
+
+<div class="row">
+    <div class="col-lg-7">
+        <div class="card ml-3">
+            <div class="card-header">
+                 <i class="fa fa-align-justify"></i> O'qtuvchinig Rasmi
+            </div>
+            <div class="card-body">
+                <img src="{{ object.image.url }}" class="img-fluid" />
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
