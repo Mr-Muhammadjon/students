@@ -1,0 +1,103 @@
+{% extends 'wrapper.html' %}
+{% load static %}
+{% block content %}
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-lg-3 col-md-12 card p-3 shadow">
+                <center>
+                    <img src="{{object.image.url}}" alt="" class="avatar-bg">
+                    <hr>
+                    <h2>{{object.user.first_name}}</h2>
+                    <h6>{{object.user.last_name}}</h6>
+                    <p>O'quvchilari: <b>{{object.student.all.count}}</b> ta</p>
+                    <p>Telefon no: <b>{{object.tel_num}}</b></p>
+                    {% if object.user == request.user or request.user.is_superuser %}
+                        <a href="{% url 'main:upd_teacher' object.pk %}" class="btn btn-warning"><i class="zmdi zmdi-edit"></i> Profilni yangilash</a>
+                        <p class="mt-3 small">Bitta dars uchun:</p>
+                        <h4>{{object.price}} so'm</h4>
+                    {% endif %}
+                        
+                </center>
+            </div>
+
+            <div class="col-lg-9 col-md-12">
+                <button id="openBtn" class="btn btn-primary">Davomat olish</button>
+                <table class="table w-100 mt-3">
+                    
+                    <tr class="head">
+                        <td>Ism, familiya</td>
+                        {% for student in object.student.all %}
+
+                            {% for history in student.history.all %}
+
+                                {% if history %}
+                                    <td>{{history.came_time}}</td>
+                                    {% else %}
+                                    <td>19.12</td>
+                                {% endif %}
+
+                            {% endfor %}
+
+                        {% endfor %}
+                        
+                        <td id="cameNav"></td>
+                        <td class="afterCame">19.12</td>
+                    </tr>
+                    
+                    {% for student in object.student.all %}
+                        <tr>
+                            <td>{{student.name}}</td>
+                            
+                            {% for history in student.history.all %}
+                                
+                                {% if history %}
+                                    <td class="bg-primary"></td>
+                                    {% else %}
+                                    <td class="bg-danger"></td>
+                                {% endif %}
+                                    
+                            {% endfor %}
+                                
+                            <td class="cameButton">
+                                <a href="#" id="cameOk" class="btn btn-success" data-action='true'>Keldi</a>
+                            </td>
+                            <td class="afterCame bg-primary"></td>
+                        </tr>
+                    {% endfor %}
+                        
+                    
+                </table>
+                    
+            </div>
+        </div>
+    </div>
+    <style>
+        td{
+            border: 1px solid black;
+            width: auto;
+        }
+    </style>
+    <script src="/static/assets/js/jquery.min.js"></script>
+    <script>
+        $('#cameNav').hide();
+        $('.cameButton').hide();
+
+        $('.afterCame').hide();
+
+        $('#openBtn').on('click', function() {
+            $('#cameNav').show();
+            $('.cameButton').show();
+        })
+
+        $('#cameOk').on('click', function(){
+            if(this.action === 'true'){
+                this.action = 'false';
+                $('#cameOk').addClass('btn-warning')
+            }else{
+                this.action = 'true'
+                $('#cameOk').removeClass('btn-warning')
+            }
+        })
+    </script>
+{% endblock content %}
+    
